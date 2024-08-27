@@ -13,6 +13,7 @@ protocol TaskListViewInputProtocol: AnyObject {
 
 protocol TaskListViewOutputProtocol {
     init(view: TaskListViewInputProtocol)
+    func didTapCell(at indexPath: IndexPath)
 }
 
 class TaskListViewController: UIViewController {
@@ -24,7 +25,16 @@ class TaskListViewController: UIViewController {
         super.viewDidLoad()
         configurator.configure(with: self)
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailsVC = segue.destination as? TaskDetailsViewController else {
+            return
+        }
+        guard let task = sender as? Task else { return }
+        
+        let configurator: TaskDetailsConfiguratorProtocol = TaskDetailsConfigurator()
+        configurator.configure(with: detailsVC, and: task)
+    }
 }
 
 // MARK: - UITableViewDataSource

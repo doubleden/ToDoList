@@ -15,10 +15,17 @@ final class TaskListPresenter: TaskListViewOutputProtocol {
     
     var interactor: TaskListInteractorInputProtocol!
     var router: TaskListRouterInputProtocol!
+    
     private unowned let view: TaskListViewInputProtocol
+    private var dataStore: TaskListDataStore?
     
     init(view: any TaskListViewInputProtocol) {
         self.view = view
+    }
+    
+    func didTapCell(at indexPath: IndexPath) {
+        guard let task = dataStore?.tasks[indexPath.row] else { return }
+        router.showTaskListDetailsViewController(with: task)
     }
 }
 

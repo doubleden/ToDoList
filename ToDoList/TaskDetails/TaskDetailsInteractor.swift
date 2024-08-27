@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TaskDetailsInteractorInputProtocol {
-    init(presenter: TaskDetailsInteractorOutputProtocol)
+    init(presenter: TaskDetailsInteractorOutputProtocol, task: Task)
 }
 
 protocol TaskDetailsInteractorOutputProtocol: AnyObject {
@@ -18,8 +18,10 @@ protocol TaskDetailsInteractorOutputProtocol: AnyObject {
 final class TaskDetailsInteractor: TaskDetailsInteractorInputProtocol {
     
     private unowned let presenter: TaskDetailsInteractorOutputProtocol
+    private let task: Task
     
-    init(presenter: TaskDetailsInteractorOutputProtocol) {
+    init(presenter: TaskDetailsInteractorOutputProtocol, task: Task) {
         self.presenter = presenter
+        self.task = task
     }
 }

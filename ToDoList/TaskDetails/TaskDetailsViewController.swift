@@ -28,7 +28,6 @@ class TaskDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurator.configure(with: self)
     }
     
     @IBAction func doneButtonDidTapped(_ sender: UIButton) {
