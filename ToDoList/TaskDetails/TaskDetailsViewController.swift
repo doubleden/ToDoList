@@ -22,6 +22,7 @@ protocol TaskDetailsViewOutputProtocol {
 
 class TaskDetailsViewController: UIViewController {
 
+    @IBOutlet var nameTaskLabel: UILabel!
     @IBOutlet var dateTaskLabel: UILabel!
     @IBOutlet var descriptionTaskLabel: UILabel!
     @IBOutlet var doneButton: UIButton!
@@ -41,7 +42,7 @@ class TaskDetailsViewController: UIViewController {
 
 extension TaskDetailsViewController: TaskDetailsViewInputProtocol {
     func displayTaskName(with name: String) {
-        self.title = name
+        nameTaskLabel.text = name
     }
     
     func displayTaskDate(with date: String) {

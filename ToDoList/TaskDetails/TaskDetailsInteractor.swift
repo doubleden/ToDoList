@@ -32,15 +32,14 @@ final class TaskDetailsInteractor: TaskDetailsInteractorInputProtocol {
         let dataStore = TaskDetailsDataStore(
             name: task.name ?? "",
             description: task.descrip ?? "",
-            date: task.date ?? Date(),
+            date: task.date ?? nil,
             isDone: task.isDone
         )
         presenter.receiveTaskDetails(with: dataStore)
     }
     
     func toggleIsDoneStatus() {
-        task.isDone.toggle()
-        
+        StorageManager.shared.toggleTaskIsDone(task: task)
         presenter.receiveTaskStatus(with: task.isDone)
     }
 }

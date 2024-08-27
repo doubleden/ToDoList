@@ -67,5 +67,17 @@ final class StorageManager {
         taskCD.isDone = task.isDone
         saveContext()
     }
+    
+    func toggleTaskIsDone(task: Task) {
+        task.isDone.toggle()
+        saveContext()
+    }
+    
+    func edit(_ task: Task, withNewTask: Task) {
+        task.name = withNewTask.name
+        task.descrip = withNewTask.descrip
+        task.date = withNewTask.date
+        saveContext()
+    }
 }
 

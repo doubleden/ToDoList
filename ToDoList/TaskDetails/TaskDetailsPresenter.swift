@@ -9,8 +9,8 @@ import Foundation
 
 struct TaskDetailsDataStore {
     let name: String
-    let description: String
-    let date: Date
+    let description: String?
+    let date: Date?
     let isDone: Bool
 }
 
@@ -40,8 +40,8 @@ extension TaskDetailsPresenter: TaskDetailsInteractorOutputProtocol {
     
     func receiveTaskDetails(with dataStore: TaskDetailsDataStore) {
         view.displayTaskName(with: dataStore.name)
-        view.displayTaskDescription(description: dataStore.description)
-        view.displayTaskDate(with: dataStore.date.formatted())
+        view.displayTaskDescription(description: dataStore.description ?? "")
+        view.displayTaskDate(with: dataStore.date?.formatted() ?? "")
     }
     
 }

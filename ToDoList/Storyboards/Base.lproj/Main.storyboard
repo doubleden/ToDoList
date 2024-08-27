@@ -66,7 +66,7 @@
             </objects>
             <point key="canvasLocation" x="1279" y="1"/>
         </scene>
-        <!--Task Name-->
+        <!--Task Details View Controller-->
         <scene sceneID="PfF-az-Fi9">
             <objects>
                 <viewController id="3io-pW-x28" customClass="TaskDetailsViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
@@ -75,19 +75,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21.05.2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ut0-Ci-Spk">
-                                <rect key="frame" x="16" y="163" width="80.666666666666671" height="19.333333333333343"/>
+                                <rect key="frame" x="16" y="234" width="80.666666666666671" height="19.333333333333343"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TC9-no-VTf">
-                                <rect key="frame" x="16" y="212.33333333333334" width="361" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="descrp" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TC9-no-VTf">
+                                <rect key="frame" x="16" y="283.33333333333331" width="361" height="24"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jw5-Kn-Vfd">
-                                <rect key="frame" x="258" y="256.33333333333331" width="52.333333333333314" height="34.333333333333314"/>
+                                <rect key="frame" x="258" y="327.33333333333331" width="52.333333333333314" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
                                     <imageReference key="image" image="checkmark.seal" catalog="system" symbolScale="large"/>
@@ -96,27 +96,37 @@
                                     <action selector="doneButtonDidTapped" destination="3io-pW-x28" eventType="touchUpInside" id="v7q-CT-JZo"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtp-d3-4bS">
+                                <rect key="frame" x="16" y="175" width="361" height="40.666666666666657"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JxL-ah-vtV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ut0-Ci-Spk" firstAttribute="top" secondItem="JxL-ah-vtV" secondAttribute="top" constant="8" id="0UM-EA-EU2"/>
+                            <constraint firstItem="ut0-Ci-Spk" firstAttribute="top" secondItem="Dtp-d3-4bS" secondAttribute="bottom" constant="18.329999999999998" id="1Dd-UN-g1D"/>
                             <constraint firstItem="ut0-Ci-Spk" firstAttribute="leading" secondItem="JxL-ah-vtV" secondAttribute="leading" constant="16" id="1qx-CU-WvI"/>
+                            <constraint firstItem="Dtp-d3-4bS" firstAttribute="top" secondItem="JxL-ah-vtV" secondAttribute="top" constant="20" id="27r-xJ-9du"/>
                             <constraint firstItem="TC9-no-VTf" firstAttribute="leading" secondItem="JxL-ah-vtV" secondAttribute="leading" constant="16" id="DGH-Lm-4Qe"/>
                             <constraint firstItem="JxL-ah-vtV" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ut0-Ci-Spk" secondAttribute="trailing" symbolic="YES" id="Kyv-3b-NTl"/>
                             <constraint firstItem="jw5-Kn-Vfd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JxL-ah-vtV" secondAttribute="leading" symbolic="YES" id="YIq-G4-3CN"/>
                             <constraint firstItem="jw5-Kn-Vfd" firstAttribute="top" secondItem="TC9-no-VTf" secondAttribute="bottom" constant="19.999999999999972" id="YSv-XU-n6e"/>
                             <constraint firstItem="JxL-ah-vtV" firstAttribute="trailing" secondItem="TC9-no-VTf" secondAttribute="trailing" constant="16" id="by3-8R-MHg"/>
+                            <constraint firstItem="Dtp-d3-4bS" firstAttribute="leading" secondItem="JxL-ah-vtV" secondAttribute="leading" constant="16" id="fJO-jJ-o6T"/>
+                            <constraint firstItem="JxL-ah-vtV" firstAttribute="trailing" secondItem="Dtp-d3-4bS" secondAttribute="trailing" constant="16" id="iLH-09-pbB"/>
                             <constraint firstItem="TC9-no-VTf" firstAttribute="top" secondItem="ut0-Ci-Spk" secondAttribute="bottom" constant="30" id="olg-FP-23n"/>
                             <constraint firstItem="ut0-Ci-Spk" firstAttribute="height" secondItem="Twf-Zo-yxc" secondAttribute="height" multiplier="0.0226917" id="x2S-gq-3xz"/>
                             <constraint firstItem="JxL-ah-vtV" firstAttribute="trailing" secondItem="jw5-Kn-Vfd" secondAttribute="trailing" constant="82.670000000000002" id="xE7-Kn-3U2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Task Name" id="dZ4-Vr-bIj"/>
+                    <navigationItem key="navigationItem" id="dZ4-Vr-bIj"/>
                     <connections>
                         <outlet property="dateTaskLabel" destination="ut0-Ci-Spk" id="zdb-yL-wqY"/>
                         <outlet property="descriptionTaskLabel" destination="TC9-no-VTf" id="5fa-p5-DtY"/>
                         <outlet property="doneButton" destination="jw5-Kn-Vfd" id="2da-IB-VWZ"/>
+                        <outlet property="nameTaskLabel" destination="Dtp-d3-4bS" id="d8p-gY-GVq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDl-pp-Pe2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
