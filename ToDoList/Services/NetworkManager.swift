@@ -14,7 +14,7 @@ final class NetworkManager {
     
     private init() {}
     
-    func fetchData(completion: @escaping (_ courses: [Task]) -> Void) {
+    func fetchData(completion: @escaping (_ tasks: [Task]) -> Void) {
         guard let url = URL(string: api) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -25,10 +25,13 @@ final class NetworkManager {
             
             do {
                 let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let tasks = try decoder.decode([Task].self, from: data)
+                
+                let managedObjectContext = StorageManager.shared.context
+                decoder.userInfo[CodingUserInfoKey.managedObjectContext] = managedObjectContext
+                
+                let apiInfo = try decoder.decode(ApiInfo.self, from: data)
                 DispatchQueue.main.async {
-                    completion(tasks)
+                    completion(apiInfo.todos)
                 }
             } catch let error {
                 print("Error serialization json", error)

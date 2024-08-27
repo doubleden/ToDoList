@@ -21,11 +21,19 @@ final class StorageManager {
         return container
     }()
     
-    private var context: NSManagedObjectContext {
+    var context: NSManagedObjectContext {
         persistentContainer.viewContext
     }
     
     private init() {}
+    
+    func isFirstLaunch() -> Bool {
+        !UserDefaults.standard.bool(forKey: "isFirstLaunch")
+    }
+    
+    func appWasLaunched() {
+        UserDefaults.standard.set(true, forKey: "isFirstLaunch")
+    }
     
     func fetchData(_ completion: @escaping(Result<[Task], Error>) -> Void) {
         let request = Task.fetchRequest()
@@ -49,6 +57,15 @@ final class StorageManager {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    func save(task: Task) {
+        let taskCD = Task(context: context)
+        taskCD.name = task.name
+        taskCD.descrip = task.descrip
+        taskCD.date = task.date
+        taskCD.isDone = task.isDone
+        saveContext()
     }
 }
 

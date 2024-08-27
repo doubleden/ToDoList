@@ -23,6 +23,10 @@ final class TaskListPresenter: TaskListViewOutputProtocol {
         self.view = view
     }
     
+    func viewDidLoad() {
+        interactor.provideTaskData()
+    }
+    
     func didTapCell(at indexPath: IndexPath) {
         guard let task = dataStore?.tasks[indexPath.row] else { return }
         router.showTaskListDetailsViewController(with: task)

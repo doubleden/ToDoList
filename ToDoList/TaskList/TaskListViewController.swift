@@ -14,6 +14,7 @@ protocol TaskListViewInputProtocol: AnyObject {
 protocol TaskListViewOutputProtocol {
     init(view: TaskListViewInputProtocol)
     func didTapCell(at indexPath: IndexPath)
+    func viewDidLoad()
 }
 
 final class TaskListViewController: UIViewController {
@@ -28,6 +29,7 @@ final class TaskListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
+        presenter.viewDidLoad()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -15,7 +15,7 @@ enum DecoderConfigurationError: Error {
 @objc(Task)
 public class Task: NSManagedObject, Decodable {
     enum CodingKeys: CodingKey {
-        case name, descrip, date, isDone
+        case todo, completed
     }
     
     required convenience public init(from decoder: Decoder) throws {
@@ -26,9 +26,7 @@ public class Task: NSManagedObject, Decodable {
         self.init(context: context)
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.name = try container.decode(String.self, forKey: .name)
-        self.descrip = try container.decode(String.self, forKey: .descrip)
-        self.date = try container.decode(Date.self, forKey: .date)
-        self.isDone = try container.decode(Bool.self, forKey: .isDone)
+        self.name = try container.decode(String.self, forKey: .todo)
+        self.isDone = try container.decode(Bool.self, forKey: .completed)
     }
 }
