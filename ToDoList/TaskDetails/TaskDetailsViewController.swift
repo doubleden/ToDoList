@@ -8,7 +8,9 @@
 import UIKit
 
 protocol TaskDetailsViewInputProtocol: AnyObject {
-    
+    func displayTaskDate(with date: String)
+    func displayTaskDescription(description: String)
+    func displayImageForButton(with systemName: String)
 }
 
 protocol TaskDetailsViewOutputProtocol {
@@ -17,8 +19,9 @@ protocol TaskDetailsViewOutputProtocol {
 
 class TaskDetailsViewController: UIViewController {
 
-    @IBOutlet var TaskDateLabel: UILabel!
-    @IBOutlet var TaskDescriptionLabel: UILabel!
+    @IBOutlet var dateTaskLabel: UILabel!
+    @IBOutlet var descriptionTaskLabel: UILabel!
+    @IBOutlet var doneButton: UIButton!
     
     var presenter: TaskDetailsViewOutputProtocol!
     private let configurator = TaskDetailsConfigurator()
@@ -28,11 +31,20 @@ class TaskDetailsViewController: UIViewController {
         configurator.configure(with: self)
     }
     
-    @IBAction func DoneButtonDidTapped(_ sender: UIButton) {
+    @IBAction func doneButtonDidTapped(_ sender: UIButton) {
     }
-    
 }
 
 extension TaskDetailsViewController: TaskDetailsViewInputProtocol {
+    func displayTaskDate(with date: String) {
+        dateTaskLabel.text = date
+    }
     
+    func displayTaskDescription(description: String) {
+        descriptionTaskLabel.text = description
+    }
+    
+    func displayImageForButton(with systemName: String) {
+        doneButton.setImage(UIImage(systemName: systemName), for: .normal)
+    }
 }

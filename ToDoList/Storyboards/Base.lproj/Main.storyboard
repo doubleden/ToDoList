@@ -39,7 +39,7 @@
                                                 <imageReference key="image" image="checkmark.seal" catalog="system" symbolScale="large"/>
                                             </buttonConfiguration>
                                             <connections>
-                                                <action selector="DoneButtonDidTapped:" destination="3io-pW-x28" eventType="touchUpInside" id="ZPK-aZ-hsJ"/>
+                                                <action selector="doneButtonDidTapped:" destination="3io-pW-x28" eventType="touchUpInside" id="ZPK-aZ-hsJ"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -95,7 +95,7 @@
                                     <imageReference key="image" image="checkmark.seal" catalog="system" symbolScale="large"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="DoneButtonDidTapped:" destination="3io-pW-x28" eventType="touchUpInside" id="Wf6-IG-wQ1"/>
+                                    <action selector="doneButtonDidTapped:" destination="3io-pW-x28" eventType="touchUpInside" id="Wf6-IG-wQ1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -116,8 +116,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Task Name" id="dZ4-Vr-bIj"/>
                     <connections>
-                        <outlet property="TaskDateLabel" destination="ut0-Ci-Spk" id="zdb-yL-wqY"/>
-                        <outlet property="TaskDescriptionLabel" destination="TC9-no-VTf" id="5fa-p5-DtY"/>
+                        <outlet property="dateTaskLabel" destination="ut0-Ci-Spk" id="zdb-yL-wqY"/>
+                        <outlet property="descriptionTaskLabel" destination="TC9-no-VTf" id="5fa-p5-DtY"/>
+                        <outlet property="doneButton" destination="jw5-Kn-Vfd" id="ZK0-ef-uPN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDl-pp-Pe2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
