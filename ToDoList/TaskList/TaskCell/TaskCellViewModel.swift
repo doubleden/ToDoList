@@ -10,9 +10,10 @@ import UIKit
 protocol TaskCellViewModelProtocol {
     var cellID: String { get }
     var cellHeight: Double { get }
-    var buttonSystemNameImage: String { get }
+    var taskIsDone: Bool { get }
     var taskName: String { get }
     init(task: Task)
+    func buttonDidTapped()
 }
 
 protocol TaskSectionViewModelProtocol {
@@ -26,21 +27,25 @@ final class TaskCellViewModel: TaskCellViewModelProtocol {
     }
     
     var cellHeight: Double {
-        40
+        60
     }
     
-    var buttonSystemNameImage: String {
-        task.isDone ? "checkmark.seal.fill" : "checkmark.seal"
+    var taskIsDone: Bool {
+        task.isDone
     }
     
     var taskName: String {
-        task.name ?? ""
+        task.name
     }
     
     private let task: Task
     
     init(task: Task) {
         self.task = task
+    }
+    
+    func buttonDidTapped() {
+        StorageManager.shared.toggleTaskIsDone(task: task)
     }
 }
 

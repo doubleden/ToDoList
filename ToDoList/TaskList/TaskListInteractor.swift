@@ -24,8 +24,11 @@ final class TaskListInteractor: TaskListInteractorInputProtocol {
     }
     
     func provideTaskData() {
-        if StorageManager.shared.isFirstLaunch() {
+        let storageManager = StorageManager.shared
+        
+        if storageManager.isFirstLaunch() {
             fetchTaskDataFromApi()
+            storageManager.appWasLaunched()
         } else {
             fetchFromDataBase()
         }

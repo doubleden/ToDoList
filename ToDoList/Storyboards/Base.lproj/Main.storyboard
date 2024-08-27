@@ -26,29 +26,40 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="77"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ga2-Gf-B4t">
-                                            <rect key="frame" x="36" y="19" width="48" height="39"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHL-EC-HH2">
-                                            <rect key="frame" x="304.66666666666669" y="19.000000000000004" width="52.333333333333314" height="34.333333333333343"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain">
-                                                <imageReference key="image" image="checkmark.seal" catalog="system" symbolScale="large"/>
-                                            </buttonConfiguration>
-                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDu-yg-29q">
+                                            <rect key="frame" x="36" y="19" width="321" height="39"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ga2-Gf-B4t">
+                                                    <rect key="frame" x="0.0" y="0.0" width="283.66666666666669" height="39"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHL-EC-HH2">
+                                                    <rect key="frame" x="283.66666666666669" y="0.0" width="37.333333333333314" height="39"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain">
+                                                        <imageReference key="image" image="checkmark.seal" catalog="system" symbolScale="large"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="buttonDidTapped" destination="reb-py-H0D" eventType="touchUpInside" id="zwQ-ga-LrW"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="ga2-Gf-B4t" firstAttribute="height" secondItem="VUZ-Fg-fgT" secondAttribute="height" multiplier="0.506494" id="0Pv-m7-KF2"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="gHL-EC-HH2" secondAttribute="trailing" constant="16" id="BXj-Uk-m6Y"/>
-                                        <constraint firstItem="ga2-Gf-B4t" firstAttribute="centerY" secondItem="VUZ-Fg-fgT" secondAttribute="centerY" id="EQX-Il-hyx"/>
-                                        <constraint firstItem="ga2-Gf-B4t" firstAttribute="top" secondItem="gHL-EC-HH2" secondAttribute="top" id="d56-wU-8kU"/>
-                                        <constraint firstItem="gHL-EC-HH2" firstAttribute="leading" secondItem="ga2-Gf-B4t" secondAttribute="trailing" constant="220.66666666666669" id="eVi-xy-vkn"/>
-                                        <constraint firstItem="ga2-Gf-B4t" firstAttribute="leading" secondItem="VUZ-Fg-fgT" secondAttribute="leadingMargin" constant="16" id="egt-al-D4j"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="zDu-yg-29q" secondAttribute="bottom" constant="8" id="C0n-sd-Xrs"/>
+                                        <constraint firstItem="zDu-yg-29q" firstAttribute="top" secondItem="VUZ-Fg-fgT" secondAttribute="topMargin" constant="8" id="KRm-UB-sB9"/>
+                                        <constraint firstItem="gHL-EC-HH2" firstAttribute="width" secondItem="VUZ-Fg-fgT" secondAttribute="width" multiplier="0.094656" id="jhI-zq-dSl"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="zDu-yg-29q" secondAttribute="trailing" constant="16" id="kWO-xI-I4Q"/>
+                                        <constraint firstItem="zDu-yg-29q" firstAttribute="leading" secondItem="VUZ-Fg-fgT" secondAttribute="leadingMargin" constant="16" id="lDQ-rI-TiL"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="button" destination="gHL-EC-HH2" id="Icb-73-L65"/>
+                                    <outlet property="titleLabel" destination="ga2-Gf-B4t" id="Sa3-fd-1ae"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -64,7 +75,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sw-um-NUW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1279" y="1"/>
+            <point key="canvasLocation" x="1278.6259541984732" y="0.70422535211267612"/>
         </scene>
         <!--Task Details View Controller-->
         <scene sceneID="PfF-az-Fi9">

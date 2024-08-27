@@ -30,12 +30,13 @@ final class TaskDetailsInteractor: TaskDetailsInteractorInputProtocol {
     
     func provideDetails() {
         let dataStore = TaskDetailsDataStore(
-            name: task.name ?? "",
+            name: task.name,
             description: task.descrip ?? "",
             date: task.date ?? nil,
             isDone: task.isDone
         )
         presenter.receiveTaskDetails(with: dataStore)
+        presenter.receiveTaskStatus(with: dataStore.isDone)
     }
     
     func toggleIsDoneStatus() {

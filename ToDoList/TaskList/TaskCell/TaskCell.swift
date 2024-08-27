@@ -12,17 +12,25 @@ protocol TaskCellRepresentable {
 }
 
 final class TaskCell: UITableViewCell, TaskCellRepresentable {
+    @IBOutlet var button: UIButton!
+    @IBOutlet var titleLabel: UILabel!
+    
     var viewModel: TaskCellViewModelProtocol? {
         didSet {
             updateView()
         }
     }
     
+    @IBAction func buttonDidTapped() {
+        guard let viewModel = viewModel as? TaskCellViewModel else { return }
+        viewModel.buttonDidTapped()
+        updateView()
+    }
+    
     private func updateView() {
         guard let viewModel = viewModel as? TaskCellViewModel else { return }
-        var content = defaultContentConfiguration()
-        content.text = viewModel.taskName
-        content.image = UIImage(systemName: viewModel.buttonSystemNameImage)
-        contentConfiguration = content
+        titleLabel.text = viewModel.taskName
+        let systemName = viewModel.taskIsDone ? "checkmark.seal.fill" : "checkmark.seal"
+        button.setImage(UIImage(systemName: systemName), for: .normal)
     }
 }

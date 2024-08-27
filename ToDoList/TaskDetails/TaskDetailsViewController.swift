@@ -27,12 +27,19 @@ class TaskDetailsViewController: UIViewController {
     @IBOutlet var descriptionTaskLabel: UILabel!
     @IBOutlet var doneButton: UIButton!
     
+    var delegate: TaskListViewDelegate?
     var presenter: TaskDetailsViewOutputProtocol!
     private let configurator = TaskDetailsConfigurator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.showDetails()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        DispatchQueue.main.async { [unowned self] in
+            delegate?.updateTaskListView()
+        }
     }
     
     @IBAction func doneButtonDidTapped() {

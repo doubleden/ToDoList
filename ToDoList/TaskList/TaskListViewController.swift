@@ -17,6 +17,10 @@ protocol TaskListViewOutputProtocol {
     func viewDidLoad()
 }
 
+protocol TaskListViewDelegate: AnyObject {
+    func updateTaskListView()
+}
+
 final class TaskListViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
@@ -32,6 +36,7 @@ final class TaskListViewController: UIViewController {
         presenter.viewDidLoad()
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailsVC = segue.destination as? TaskDetailsViewController else {
             return
@@ -39,6 +44,7 @@ final class TaskListViewController: UIViewController {
         guard let task = sender as? Task else { return }
         
         let configurator: TaskDetailsConfiguratorProtocol = TaskDetailsConfigurator()
+        detailsVC.delegate = self
         configurator.configure(with: detailsVC, and: task)
     }
 }
@@ -74,6 +80,12 @@ extension TaskListViewController: UITableViewDelegate {
 extension TaskListViewController: TaskListViewInputProtocol {
     func reloadData(for section: TaskSectionViewModel) {
         sectionViewModel = section
+        tableView.reloadData()
+    }
+}
+
+extension TaskListViewController: TaskListViewDelegate {
+    func updateTaskListView() {
         tableView.reloadData()
     }
 }

@@ -19,10 +19,8 @@ extension Task {
     @NSManaged public var date: Date?
     @NSManaged public var descrip: String?
     @NSManaged public var isDone: Bool
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
 
 }
 
-extension Task : Identifiable {
-
-}
+extension Task : Identifiable {}
