@@ -8,13 +8,15 @@
 import UIKit
 
 protocol TaskDetailsViewInputProtocol: AnyObject {
+    func displayTaskName(with name: String)
     func displayTaskDate(with date: String)
     func displayTaskDescription(description: String)
-    func displayImageForButton(with systemName: String)
+    func displayImageForButton(with status : Bool)
 }
 
 protocol TaskDetailsViewOutputProtocol {
     init(view: TaskDetailsViewInputProtocol)
+    func showDetails()
     func doneButtonWasPressed()
 }
 
@@ -29,6 +31,7 @@ class TaskDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.showDetails()
     }
     
     @IBAction func doneButtonDidTapped() {
@@ -37,6 +40,10 @@ class TaskDetailsViewController: UIViewController {
 }
 
 extension TaskDetailsViewController: TaskDetailsViewInputProtocol {
+    func displayTaskName(with name: String) {
+        self.title = name
+    }
+    
     func displayTaskDate(with date: String) {
         dateTaskLabel.text = date
     }
@@ -45,7 +52,8 @@ extension TaskDetailsViewController: TaskDetailsViewInputProtocol {
         descriptionTaskLabel.text = description
     }
     
-    func displayImageForButton(with systemName: String) {
+    func displayImageForButton(with status: Bool) {
+        let systemName = status ? "checkmark.seal.fill" : "checkmark.seal"
         doneButton.setImage(UIImage(systemName: systemName), for: .normal)
     }
 }

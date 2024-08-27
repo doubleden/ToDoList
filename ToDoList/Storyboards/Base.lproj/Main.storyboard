@@ -49,9 +49,6 @@
                                         <constraint firstItem="ga2-Gf-B4t" firstAttribute="leading" secondItem="VUZ-Fg-fgT" secondAttribute="leadingMargin" constant="16" id="egt-al-D4j"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="3io-pW-x28" kind="show" identifier="showDetails" id="iRm-WA-mkt"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -62,11 +59,12 @@
                     <navigationItem key="navigationItem" title="Task List" id="8Cn-tN-pjP"/>
                     <connections>
                         <outlet property="tableView" destination="zoH-oN-GM6" id="m7y-0A-GGx"/>
+                        <segue destination="3io-pW-x28" kind="show" identifier="showDetails" id="CFU-I4-5lZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sw-um-NUW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1232.824427480916" y="0.70422535211267612"/>
+            <point key="canvasLocation" x="1279" y="1"/>
         </scene>
         <!--Task Name-->
         <scene sceneID="PfF-az-Fi9">

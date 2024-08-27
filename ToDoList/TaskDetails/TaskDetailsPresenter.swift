@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct TaskDetailsData {
+struct TaskDetailsDataStore {
     let name: String
-    let date: Date
     let description: String
+    let date: Date
     let isDone: Bool
 }
 
@@ -23,6 +23,10 @@ final class TaskDetailsPresenter: TaskDetailsViewOutputProtocol {
         self.view = view
     }
     
+    func showDetails() {
+        interactor.provideDetails()
+    }
+    
     func doneButtonWasPressed() {
         interactor.toggleIsDoneStatus()
     }
@@ -30,5 +34,14 @@ final class TaskDetailsPresenter: TaskDetailsViewOutputProtocol {
 
 // MARK: - TaskDetailsInteractorOutputProtocol
 extension TaskDetailsPresenter: TaskDetailsInteractorOutputProtocol {
+    func receiveTaskStatus(with status: Bool) {
+        view.displayImageForButton(with: status)
+    }
+    
+    func receiveTaskDetails(with dataStore: TaskDetailsDataStore) {
+        view.displayTaskName(with: dataStore.name)
+        view.displayTaskDescription(description: dataStore.description)
+        view.displayTaskDate(with: dataStore.date.formatted())
+    }
     
 }

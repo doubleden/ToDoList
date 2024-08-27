@@ -10,10 +10,12 @@ import Foundation
 protocol TaskDetailsInteractorInputProtocol {
     init(presenter: TaskDetailsInteractorOutputProtocol, task: Task)
     func toggleIsDoneStatus()
+    func provideDetails()
 }
 
 protocol TaskDetailsInteractorOutputProtocol: AnyObject {
-    
+    func receiveTaskDetails(with dataStore: TaskDetailsDataStore)
+    func receiveTaskStatus(with status: Bool)
 }
 
 final class TaskDetailsInteractor: TaskDetailsInteractorInputProtocol {
@@ -26,7 +28,19 @@ final class TaskDetailsInteractor: TaskDetailsInteractorInputProtocol {
         self.task = task
     }
     
+    func provideDetails() {
+        let dataStore = TaskDetailsDataStore(
+            name: task.name ?? "",
+            description: task.descrip ?? "",
+            date: task.date ?? Date(),
+            isDone: task.isDone
+        )
+        presenter.receiveTaskDetails(with: dataStore)
+    }
+    
     func toggleIsDoneStatus() {
         task.isDone.toggle()
+        
+        presenter.receiveTaskStatus(with: task.isDone)
     }
 }
