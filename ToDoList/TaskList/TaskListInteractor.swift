@@ -17,7 +17,7 @@ protocol TaskListInteractorOutputProtocol: AnyObject {
 }
 
 final class TaskListInteractor: TaskListInteractorInputProtocol {
-    unowned private let presenter: TaskListInteractorOutputProtocol
+    private unowned let presenter: TaskListInteractorOutputProtocol
     
     init(presenter: any TaskListInteractorOutputProtocol) {
         self.presenter = presenter

@@ -15,8 +15,10 @@ final class TaskListConfigurator: TaskListConfiguratorProtocol {
     func configure(with view: TaskListViewController) {
         let presenter = TaskListPresenter(view: view)
         let interactor = TaskListInteractor(presenter: presenter)
+        let router = TaskListRouter(view: view)
         
         view.presenter = presenter
         presenter.interactor = interactor
+        presenter.router = router
     }
 }

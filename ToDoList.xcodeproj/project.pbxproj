@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		059AB1E72C7DFD8D00CE23E4 /* TaskListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059AB1E62C7DFD8D00CE23E4 /* TaskListRouter.swift */; };
 		05DC6DD32C7DBBE50088A400 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DC6DD22C7DBBE50088A400 /* AppDelegate.swift */; };
 		05DC6DD52C7DBBE50088A400 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DC6DD42C7DBBE50088A400 /* SceneDelegate.swift */; };
 		05DC6DDA2C7DBBE50088A400 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 05DC6DD92C7DBBE50088A400 /* Base */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		059AB1E62C7DFD8D00CE23E4 /* TaskListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListRouter.swift; sourceTree = "<group>"; };
 		05DC6DCF2C7DBBE50088A400 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DC6DD22C7DBBE50088A400 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05DC6DD42C7DBBE50088A400 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				05DC6DF22C7DC0AF0088A400 /* TaskListViewController.swift */,
 				05DC6DF92C7DD7D90088A400 /* TaskListPresenter.swift */,
 				05DC6DFB2C7DD7FD0088A400 /* TaskListInteractor.swift */,
+				059AB1E62C7DFD8D00CE23E4 /* TaskListRouter.swift */,
 				05DC6DFD2C7DDA260088A400 /* TaskListConfigurator.swift */,
 			);
 			path = TaskList;
@@ -245,6 +248,7 @@
 				05DC6DFC2C7DD7FD0088A400 /* TaskListInteractor.swift in Sources */,
 				05DC6DFE2C7DDA260088A400 /* TaskListConfigurator.swift in Sources */,
 				05DC6E002C7DED160088A400 /* StorageManager.swift in Sources */,
+				059AB1E72C7DFD8D00CE23E4 /* TaskListRouter.swift in Sources */,
 				05DC6DD52C7DBBE50088A400 /* SceneDelegate.swift in Sources */,
 				05DC6E042C7DF2980088A400 /* TaskDetailsPresenter.swift in Sources */,
 				05DC6E082C7DF41E0088A400 /* TaskDetailsConfigurator.swift in Sources */,

@@ -17,7 +17,7 @@ struct TaskDetailsData {
 final class TaskDetailsPresenter: TaskDetailsViewOutputProtocol {
     
     var interactor: TaskDetailsInteractorInputProtocol!
-    unowned private let view: TaskDetailsViewInputProtocol
+    private unowned let view: TaskDetailsViewInputProtocol
     
     init(view: any TaskDetailsViewInputProtocol) {
         self.view = view

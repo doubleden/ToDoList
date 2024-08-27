@@ -15,7 +15,8 @@ struct TaskData {
 final class TaskListPresenter: TaskListViewOutputProtocol {
     
     var interactor: TaskListInteractorInputProtocol!
-    unowned private let view: TaskListViewInputProtocol
+    var router: TaskListRouterInputProtocol!
+    private unowned let view: TaskListViewInputProtocol
     
     init(view: any TaskListViewInputProtocol) {
         self.view = view

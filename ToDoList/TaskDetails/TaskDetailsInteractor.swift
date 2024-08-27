@@ -17,7 +17,7 @@ protocol TaskDetailsInteractorOutputProtocol: AnyObject {
 
 final class TaskDetailsInteractor: TaskDetailsInteractorInputProtocol {
     
-    unowned private let presenter: TaskDetailsInteractorOutputProtocol
+    private unowned let presenter: TaskDetailsInteractorOutputProtocol
     
     init(presenter: TaskDetailsInteractorOutputProtocol) {
         self.presenter = presenter
