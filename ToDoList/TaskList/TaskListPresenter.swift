@@ -7,9 +7,8 @@
 
 import Foundation
 
-struct TaskData {
-    let name: String
-    let isDone: Bool
+struct TaskListDataStore {
+    let tasks: [Task]
 }
 
 final class TaskListPresenter: TaskListViewOutputProtocol {
@@ -26,6 +25,7 @@ final class TaskListPresenter: TaskListViewOutputProtocol {
 // MARK: - TaskListInteractorOutputProtocol
 extension TaskListPresenter: TaskListInteractorOutputProtocol {
     
-    func receiveTaskData(taskData: TaskData) {
+    func receiveTaskData(taskData: TaskListDataStore) {
+        
     }
 }

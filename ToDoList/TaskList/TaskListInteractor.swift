@@ -13,7 +13,7 @@ protocol TaskListInteractorInputProtocol {
 }
 
 protocol TaskListInteractorOutputProtocol: AnyObject {
-    func receiveTaskData(taskData: TaskData)
+    func receiveTaskData(taskData: TaskListDataStore)
 }
 
 final class TaskListInteractor: TaskListInteractorInputProtocol {
@@ -24,5 +24,14 @@ final class TaskListInteractor: TaskListInteractorInputProtocol {
     }
     
     func provideTaskData() {
+        StorageManager.shared.fetchData { [unowned self] result in
+            switch result {
+            case .success(let taskList):
+                let taskData = TaskListDataStore(tasks: taskList)
+                presenter.receiveTaskData(taskData: taskData)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
