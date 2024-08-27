@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="77" id="reb-py-H0D" customClass="TaskCellViewController" customModule="ToDoList" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="77" id="reb-py-H0D" customClass="TaskCellViewModel" customModule="ToDoList" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="reb-py-H0D" id="VUZ-Fg-fgT">
@@ -38,9 +38,6 @@
                                             <buttonConfiguration key="configuration" style="plain">
                                                 <imageReference key="image" image="checkmark.seal" catalog="system" symbolScale="large"/>
                                             </buttonConfiguration>
-                                            <connections>
-                                                <action selector="doneButtonDidTapped:" destination="3io-pW-x28" eventType="touchUpInside" id="ZPK-aZ-hsJ"/>
-                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -63,6 +60,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Task List" id="8Cn-tN-pjP"/>
+                    <connections>
+                        <outlet property="tableView" destination="zoH-oN-GM6" id="m7y-0A-GGx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sw-um-NUW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -95,7 +95,7 @@
                                     <imageReference key="image" image="checkmark.seal" catalog="system" symbolScale="large"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="doneButtonDidTapped:" destination="3io-pW-x28" eventType="touchUpInside" id="Wf6-IG-wQ1"/>
+                                    <action selector="doneButtonDidTapped" destination="3io-pW-x28" eventType="touchUpInside" id="v7q-CT-JZo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -118,7 +118,7 @@
                     <connections>
                         <outlet property="dateTaskLabel" destination="ut0-Ci-Spk" id="zdb-yL-wqY"/>
                         <outlet property="descriptionTaskLabel" destination="TC9-no-VTf" id="5fa-p5-DtY"/>
-                        <outlet property="doneButton" destination="jw5-Kn-Vfd" id="ZK0-ef-uPN"/>
+                        <outlet property="doneButton" destination="jw5-Kn-Vfd" id="2da-IB-VWZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDl-pp-Pe2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

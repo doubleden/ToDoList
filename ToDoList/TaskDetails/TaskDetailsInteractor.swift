@@ -9,6 +9,7 @@ import Foundation
 
 protocol TaskDetailsInteractorInputProtocol {
     init(presenter: TaskDetailsInteractorOutputProtocol, task: Task)
+    func toggleIsDoneStatus()
 }
 
 protocol TaskDetailsInteractorOutputProtocol: AnyObject {
@@ -23,5 +24,9 @@ final class TaskDetailsInteractor: TaskDetailsInteractorInputProtocol {
     init(presenter: TaskDetailsInteractorOutputProtocol, task: Task) {
         self.presenter = presenter
         self.task = task
+    }
+    
+    func toggleIsDoneStatus() {
+        task.isDone.toggle()
     }
 }

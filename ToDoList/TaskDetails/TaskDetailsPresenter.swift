@@ -22,6 +22,10 @@ final class TaskDetailsPresenter: TaskDetailsViewOutputProtocol {
     init(view: any TaskDetailsViewInputProtocol) {
         self.view = view
     }
+    
+    func doneButtonWasPressed() {
+        interactor.toggleIsDoneStatus()
+    }
 }
 
 // MARK: - TaskDetailsInteractorOutputProtocol

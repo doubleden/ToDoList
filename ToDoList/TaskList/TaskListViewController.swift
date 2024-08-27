@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TaskListViewInputProtocol: AnyObject {
-    func reloadData(for: String)
+    func reloadData(for section: TaskSectionViewModel)
 }
 
 protocol TaskListViewOutputProtocol {
@@ -16,10 +16,14 @@ protocol TaskListViewOutputProtocol {
     func didTapCell(at indexPath: IndexPath)
 }
 
-class TaskListViewController: UIViewController {
+final class TaskListViewController: UIViewController {
+    
+    @IBOutlet var tableView: UITableView!
     
     var presenter: TaskListViewOutputProtocol!
+    
     private let configurator = TaskListConfigurator()
+    private var sectionViewModel: TaskSectionViewModelProtocol = TaskSectionViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,29 +44,34 @@ class TaskListViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension TaskListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        sectionViewModel.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        return UITableViewCell()
+        let cellViewModel = sectionViewModel.rows[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellViewModel.cellID, for: indexPath)
+        guard let cell = cell as? TaskCell else { return UITableViewCell() }
+        cell.viewModel = cellViewModel
+        return cell
     }
 }
 
 // MARK: - UITableViewDelegate
-extension TaskCellViewController: UITableViewDelegate {
+extension TaskListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: true)
+        presenter.didTapCell(at: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 20
+        sectionViewModel.rows[indexPath.row].cellHeight
     }
 }
 
 // MARK: - TaskListViewInputProtocol
 extension TaskListViewController: TaskListViewInputProtocol {
-    func reloadData(for: String) {
-        
+    func reloadData(for section: TaskSectionViewModel) {
+        sectionViewModel = section
+        tableView.reloadData()
     }
 }

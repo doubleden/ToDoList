@@ -15,6 +15,7 @@ protocol TaskDetailsViewInputProtocol: AnyObject {
 
 protocol TaskDetailsViewOutputProtocol {
     init(view: TaskDetailsViewInputProtocol)
+    func doneButtonWasPressed()
 }
 
 class TaskDetailsViewController: UIViewController {
@@ -30,7 +31,8 @@ class TaskDetailsViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func doneButtonDidTapped(_ sender: UIButton) {
+    @IBAction func doneButtonDidTapped() {
+        presenter.doneButtonWasPressed()
     }
 }
 
