@@ -35,6 +35,6 @@ extension TaskListPresenter: TaskListInteractorOutputProtocol {
         self.dataStore = taskData
         let section = TaskSectionViewModel()
         dataStore?.tasks.forEach { section.rows.append(TaskCellViewModel(task: $0)) }
-        view.reloadData(for section: section)
+        view.reloadData(for: section)
     }
 }
