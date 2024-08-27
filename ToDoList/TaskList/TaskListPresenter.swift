@@ -9,8 +9,6 @@ import Foundation
 
 struct TaskData {
     let name: String
-    let date: Date
-    let description: String
     let isDone: Bool
 }
 

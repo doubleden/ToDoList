@@ -13,7 +13,6 @@ protocol TaskListViewInputProtocol: AnyObject {
 
 protocol TaskListViewOutputProtocol {
     init(view: TaskListViewInputProtocol)
-    
 }
 
 class TaskListViewController: UIViewController {
