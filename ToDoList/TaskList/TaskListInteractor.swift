@@ -10,10 +10,12 @@ import Foundation
 protocol TaskListInteractorInputProtocol {
     init(presenter: TaskListInteractorOutputProtocol)
     func provideTaskData()
+    func delete(task: Task)
 }
 
 protocol TaskListInteractorOutputProtocol: AnyObject {
     func receiveTaskData(taskData: TaskListDataStore)
+    func receiveDeleted(task: Task)
 }
 
 final class TaskListInteractor: TaskListInteractorInputProtocol {
@@ -21,6 +23,11 @@ final class TaskListInteractor: TaskListInteractorInputProtocol {
     
     init(presenter: any TaskListInteractorOutputProtocol) {
         self.presenter = presenter
+    }
+    
+    func delete(task: Task) {
+        StorageManager.shared.delete(task)
+        presenter.receiveDeleted(task: task)
     }
     
     func provideTaskData() {

@@ -50,7 +50,7 @@ final class TaskCellViewModel: TaskCellViewModelProtocol {
 }
 
 final class TaskSectionViewModel: TaskSectionViewModelProtocol {
-    var rows: [any TaskCellViewModelProtocol] = []
+    var rows: [TaskCellViewModelProtocol] = []
     var numberOfRows: Int {
         rows.count
     }

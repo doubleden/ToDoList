@@ -9,12 +9,14 @@ import UIKit
 
 protocol TaskListViewInputProtocol: AnyObject {
     func reloadData(for section: TaskSectionViewModel)
+    func deleteRow(at indexPath: IndexPath)
 }
 
 protocol TaskListViewOutputProtocol {
     init(view: TaskListViewInputProtocol)
     func didTapCell(at indexPath: IndexPath)
     func viewDidLoad()
+    func didSwipeCell(at row: Int)
 }
 
 protocol TaskListViewDelegate: AnyObject {
@@ -35,7 +37,6 @@ final class TaskListViewController: UIViewController {
         configurator.configure(with: self)
         presenter.viewDidLoad()
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailsVC = segue.destination as? TaskDetailsViewController else {
@@ -66,6 +67,17 @@ extension TaskListViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension TaskListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(
+            style: .destructive,
+            title: "Delete"
+        ) { [unowned self] _, _, _ in
+            presenter.didSwipeCell(at: indexPath.row)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         presenter.didTapCell(at: indexPath)
@@ -78,12 +90,17 @@ extension TaskListViewController: UITableViewDelegate {
 
 // MARK: - TaskListViewInputProtocol
 extension TaskListViewController: TaskListViewInputProtocol {
+    func deleteRow(at indexPath: IndexPath) {
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
     func reloadData(for section: TaskSectionViewModel) {
         sectionViewModel = section
         tableView.reloadData()
     }
 }
 
+// MARK: - TaskListViewDelegate
 extension TaskListViewController: TaskListViewDelegate {
     func updateTaskListView() {
         tableView.reloadData()

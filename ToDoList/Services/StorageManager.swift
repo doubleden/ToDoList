@@ -79,5 +79,10 @@ final class StorageManager {
         task.date = withNewTask.date
         saveContext()
     }
+    
+    func delete(_ task: Task) {
+        context.delete(task)
+        saveContext()
+    }
 }
 
