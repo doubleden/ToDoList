@@ -31,20 +31,23 @@ final class TaskListInteractor: TaskListInteractorInputProtocol {
     }
     
     func provideTaskData() {
-        let storageManager = StorageManager.shared
-        
-        if storageManager.isFirstLaunch() {
+        if StorageManager.shared.isFirstLaunch() {
             fetchTaskDataFromApi()
-            storageManager.appWasLaunched()
         } else {
             fetchFromDataBase()
         }
     }
     
     private func fetchTaskDataFromApi() {
-        NetworkManager.shared.fetchData { [unowned self] taskList in
-            let taskData = TaskListDataStore(tasks: taskList)
-            presenter.receiveTaskData(taskData: taskData)
+        NetworkManager.shared.fetchData { [unowned self] result in
+            switch result {
+            case .success(let taskList):
+                let taskData = TaskListDataStore(tasks: taskList)
+                StorageManager.shared.appWasLaunched()
+                presenter.receiveTaskData(taskData: taskData)
+            case .failure(let error):
+                print(error)
+            }
         }
     }
     

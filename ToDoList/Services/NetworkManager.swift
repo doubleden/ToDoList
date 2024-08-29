@@ -14,29 +14,37 @@ final class NetworkManager {
     
     private init() {}
     
-    func fetchData(completion: @escaping (_ tasks: [Task]) -> Void) {
+    func fetchData(completion: @escaping(Result<[Task], NetworkError>) -> Void) {
         guard let url = URL(string: api) else { return }
-        
         URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No Description")
+            guard let data else {
+                print(error?.localizedDescription ?? "No error description")
+                completion(.failure(.noData))
                 return
             }
             
             do {
                 let decoder = JSONDecoder()
-                
                 let managedObjectContext = StorageManager.shared.context
                 decoder.userInfo[CodingUserInfoKey.managedObjectContext] = managedObjectContext
                 
                 let apiInfo = try decoder.decode(ApiInfo.self, from: data)
                 DispatchQueue.main.async {
-                    completion(apiInfo.todos)
+                    completion(.success(apiInfo.todos))
                 }
-            } catch let error {
-                print("Error serialization json", error)
+            } catch {
+                completion(.failure(.decodingError))
             }
             
         }.resume()
+    }
+}
+
+// MARK: - NetworkError Enum
+extension NetworkManager {
+    enum NetworkError: Error {
+        case invalidURL
+        case noData
+        case decodingError
     }
 }
