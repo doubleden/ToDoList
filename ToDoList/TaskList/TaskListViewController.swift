@@ -13,14 +13,11 @@ protocol TaskListViewInputProtocol: AnyObject {
 }
 
 protocol TaskListViewOutputProtocol {
+    var router: TaskListRouterInputProtocol! { get }
     init(view: TaskListViewInputProtocol)
     func didTapCell(at indexPath: IndexPath)
     func viewDidLoad()
     func didSwipeCell(at row: Int)
-}
-
-protocol TaskListViewDelegate: AnyObject {
-    func updateTaskListView()
 }
 
 final class TaskListViewController: UIViewController {
@@ -45,8 +42,7 @@ final class TaskListViewController: UIViewController {
         guard let task = sender as? Task else { return }
         
         let configurator: TaskDetailsConfiguratorProtocol = TaskDetailsConfigurator()
-        detailsVC.delegate = self
-        configurator.configure(with: detailsVC, and: task)
+        configurator.configure(with: detailsVC, and: task, presenter.router)
     }
 }
 
@@ -96,13 +92,6 @@ extension TaskListViewController: TaskListViewInputProtocol {
     
     func reloadData(for section: TaskSectionViewModel) {
         sectionViewModel = section
-        tableView.reloadData()
-    }
-}
-
-// MARK: - TaskListViewDelegate
-extension TaskListViewController: TaskListViewDelegate {
-    func updateTaskListView() {
         tableView.reloadData()
     }
 }

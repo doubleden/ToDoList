@@ -7,9 +7,10 @@
 
 import Foundation
 
-protocol TaskListRouterInputProtocol {
+protocol TaskListRouterInputProtocol: AnyObject {
     init(view: TaskListViewController)
     func showTaskListDetailsViewController(with task: Task)
+    func updateViewList()
 }
 
 final class TaskListRouter: TaskListRouterInputProtocol {
@@ -22,5 +23,9 @@ final class TaskListRouter: TaskListRouterInputProtocol {
     
     func showTaskListDetailsViewController(with task: Task) {
         view.performSegue(withIdentifier: "showDetails", sender: task)
+    }
+    
+    func updateViewList() {
+        view.tableView.reloadData()
     }
 }

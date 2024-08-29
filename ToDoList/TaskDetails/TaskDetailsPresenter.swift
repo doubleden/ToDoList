@@ -18,9 +18,11 @@ final class TaskDetailsPresenter: TaskDetailsViewOutputProtocol {
     
     var interactor: TaskDetailsInteractorInputProtocol!
     private unowned let view: TaskDetailsViewInputProtocol
+    private unowned let router: TaskListRouterInputProtocol
     
-    init(view: any TaskDetailsViewInputProtocol) {
+    init(view: TaskDetailsViewInputProtocol, router: TaskListRouterInputProtocol) {
         self.view = view
+        self.router = router
     }
     
     func showDetails() {
@@ -36,6 +38,7 @@ final class TaskDetailsPresenter: TaskDetailsViewOutputProtocol {
 extension TaskDetailsPresenter: TaskDetailsInteractorOutputProtocol {
     func receiveTaskStatus(with status: Bool) {
         view.displayImageForButton(with: status)
+        router.updateViewList()
     }
     
     func receiveTaskDetails(with dataStore: TaskDetailsDataStore) {
