@@ -15,7 +15,7 @@ protocol TaskDetailsInteractorInputProtocol {
 
 protocol TaskDetailsInteractorOutputProtocol: AnyObject {
     func receiveTaskDetails(with dataStore: TaskDetailsDataStore)
-    func receiveTaskStatus(with status: Bool)
+    func receiveUpdated(task: Task)
 }
 
 final class TaskDetailsInteractor: TaskDetailsInteractorInputProtocol {
@@ -36,11 +36,10 @@ final class TaskDetailsInteractor: TaskDetailsInteractorInputProtocol {
             isDone: task.isDone
         )
         presenter.receiveTaskDetails(with: dataStore)
-        presenter.receiveTaskStatus(with: dataStore.isDone)
     }
     
     func toggleIsDoneStatus() {
         StorageManager.shared.toggleTaskIsDone(task: task)
-        presenter.receiveTaskStatus(with: task.isDone)
+        presenter.receiveUpdated(task: task)
     }
 }

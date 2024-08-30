@@ -15,7 +15,7 @@ protocol TaskDetailsViewInputProtocol: AnyObject {
 }
 
 protocol TaskDetailsViewOutputProtocol {
-    init(view: TaskDetailsViewInputProtocol, router: TaskListRouterInputProtocol)
+    init(view: TaskDetailsViewInputProtocol, router: TaskListRouterOutputProtocol)
     func showDetails()
     func doneButtonWasPressed()
 }

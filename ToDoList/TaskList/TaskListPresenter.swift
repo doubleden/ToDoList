@@ -50,8 +50,16 @@ extension TaskListPresenter: TaskListInteractorOutputProtocol {
     }
     
     func receiveTaskData(taskData: TaskListDataStore) {
-        self.dataStore = taskData
+        dataStore = taskData
         dataStore?.tasks.forEach { section.rows.append(TaskCellViewModel(task: $0)) }
+        view.reloadData(for: section)
+    }
+}
+
+extension TaskListPresenter: TaskListRouterOutputProtocol {
+    func receiveNew(task: Task) {
+        dataStore?.tasks.append(task)
+        section.rows.append(TaskCellViewModel(task: task))
         view.reloadData(for: section)
     }
 }

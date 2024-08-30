@@ -59,13 +59,13 @@ final class StorageManager {
         }
     }
     
-    func save(task: Task) {
+    func saveTask(with name: String, _ description: String, _ date: Date) -> Task {
         let taskCD = Task(context: context)
-        taskCD.name = task.name
-        taskCD.descrip = task.descrip
-        taskCD.date = task.date
-        taskCD.isDone = task.isDone
+        taskCD.name = name
+        taskCD.descrip = description
+        taskCD.date = date
         saveContext()
+        return taskCD
     }
     
     func toggleTaskIsDone(task: Task) {

@@ -18,9 +18,9 @@ final class TaskDetailsPresenter: TaskDetailsViewOutputProtocol {
     
     var interactor: TaskDetailsInteractorInputProtocol!
     private unowned let view: TaskDetailsViewInputProtocol
-    private unowned let router: TaskListRouterInputProtocol
+    private unowned let router: TaskListRouterOutputProtocol
     
-    init(view: TaskDetailsViewInputProtocol, router: TaskListRouterInputProtocol) {
+    init(view: TaskDetailsViewInputProtocol, router: TaskListRouterOutputProtocol) {
         self.view = view
         self.router = router
     }
@@ -36,15 +36,16 @@ final class TaskDetailsPresenter: TaskDetailsViewOutputProtocol {
 
 // MARK: - TaskDetailsInteractorOutputProtocol
 extension TaskDetailsPresenter: TaskDetailsInteractorOutputProtocol {
-    func receiveTaskStatus(with status: Bool) {
-        view.displayImageForButton(with: status)
-        router.updateViewList()
+    func receiveUpdated(task: Task) {
+        view.displayImageForButton(with: task.isDone)
+        router.receiveNew(task: task)
     }
     
     func receiveTaskDetails(with dataStore: TaskDetailsDataStore) {
         view.displayTaskName(with: dataStore.name)
         view.displayTaskDescription(description: dataStore.description ?? "")
         view.displayTaskDate(with: dataStore.date?.formatted() ?? "")
+        view.displayImageForButton(with: dataStore.isDone)
     }
     
 }

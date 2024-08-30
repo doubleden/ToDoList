@@ -8,11 +8,11 @@
 import Foundation
 
 protocol AddTaskConfiguratorProtocol {
-    func configure(with view: AddTaskViewController, and router: TaskListRouterInputProtocol)
+    func configure(with view: AddTaskViewController, and router: TaskListRouterOutputProtocol)
 }
 
 final class AddTaskConfigurator: AddTaskConfiguratorProtocol {
-    func configure(with view: AddTaskViewController, and router: TaskListRouterInputProtocol) {
+    func configure(with view: AddTaskViewController, and router: TaskListRouterOutputProtocol) {
         let presenter = AddTaskPresenter(view: view, router: router)
         let interactor = AddTaskInteractor(presenter: presenter)
         

@@ -36,13 +36,17 @@ final class TaskListViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailsVC = segue.destination as? TaskDetailsViewController else {
-            return
-        }
-        guard let task = sender as? Task else { return }
+        guard let router = presenter as? TaskListRouterOutputProtocol else { return }
         
-        let configurator: TaskDetailsConfiguratorProtocol = TaskDetailsConfigurator()
-        configurator.configure(with: detailsVC, and: task, presenter.router)
+        if let detailsVC = segue.destination as? TaskDetailsViewController {
+            guard let task = sender as? Task else { return }
+            let configurator: TaskDetailsConfiguratorProtocol = TaskDetailsConfigurator()
+            configurator.configure(with: detailsVC, and: task, router)
+        } else {
+            guard let addTaskVC = segue.destination as? AddTaskViewController else { return }
+            let configurator: AddTaskConfiguratorProtocol = AddTaskConfigurator()
+            configurator.configure(with: addTaskVC, and: router)
+        }
     }
 }
 

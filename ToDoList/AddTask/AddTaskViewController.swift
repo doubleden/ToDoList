@@ -8,11 +8,11 @@
 import UIKit
 
 protocol AddTaskViewInputProtocol: AnyObject {
-    
+    func dismiss()
 }
 
 protocol AddTaskViewOutputProtocol {
-    init(view: AddTaskViewInputProtocol, router: TaskListRouterInputProtocol)
+    init(view: AddTaskViewInputProtocol, router: TaskListRouterOutputProtocol)
     func saveButtonPressed(taskName: String, taskDescription: String, taskDate: Date)
 }
 
@@ -38,6 +38,9 @@ final class AddTaskViewController: UIViewController {
     }
 }
 
+// MARK: - AddTaskViewInputProtocol
 extension AddTaskViewController: AddTaskViewInputProtocol {
-    
+    func dismiss() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }

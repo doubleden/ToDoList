@@ -9,11 +9,11 @@ import Foundation
 
 protocol AddTaskInteractorInputProtocol {
     init(presenter: AddTaskInteractorOutputProtocol)
-    func saveTask(with name: String, _ description: String, _ date: Date)
+    func saveTask(data: AddTaskDataStore)
 }
 
 protocol AddTaskInteractorOutputProtocol: AnyObject {
-    
+    func wasSave(task: Task)
 }
 
 final class AddTaskInteractor: AddTaskInteractorInputProtocol {
@@ -24,7 +24,8 @@ final class AddTaskInteractor: AddTaskInteractorInputProtocol {
         self.presenter = presenter
     }
     
-    func saveTask(with name: String, _ description: String, _ date: Date) {
-        
+    func saveTask(data: AddTaskDataStore) {
+        let newTask = StorageManager.shared.saveTask(with: data.name, data.description, data.date)
+        presenter.wasSave(task: newTask)
     }
 }
