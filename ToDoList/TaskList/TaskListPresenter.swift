@@ -56,6 +56,7 @@ extension TaskListPresenter: TaskListInteractorOutputProtocol {
     }
 }
 
+// MARK: - TaskListRouterOutputProtocol
 extension TaskListPresenter: TaskListRouterOutputProtocol {
     func receiveNew(task: Task) {
         dataStore?.tasks.append(task)

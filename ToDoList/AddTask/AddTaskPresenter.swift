@@ -35,6 +35,7 @@ final class AddTaskPresenter: AddTaskViewOutputProtocol {
     }
 }
 
+// MARK: - AddTaskInteractorOutputProtocol
 extension AddTaskPresenter: AddTaskInteractorOutputProtocol {
     func wasSave(task: Task) {
         router.receiveNew(task: task)
