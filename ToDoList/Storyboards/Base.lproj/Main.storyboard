@@ -276,6 +276,7 @@
                         <outlet property="descriptionTaskLabel" destination="TC9-no-VTf" id="5fa-p5-DtY"/>
                         <outlet property="descriptionTaskTF" destination="k3P-RN-ca1" id="JTB-cp-zfH"/>
                         <outlet property="doneButton" destination="jw5-Kn-Vfd" id="2da-IB-VWZ"/>
+                        <outlet property="editButton" destination="Fbf-5E-Ip9" id="GXC-4d-peB"/>
                         <outlet property="nameTaskLabel" destination="Dtp-d3-4bS" id="d8p-gY-GVq"/>
                         <outlet property="nameTaskTF" destination="3ie-9B-EVT" id="RnH-WC-Zsx"/>
                     </connections>

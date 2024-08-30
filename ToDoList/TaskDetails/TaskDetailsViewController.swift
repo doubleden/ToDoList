@@ -31,6 +31,7 @@ class TaskDetailsViewController: UIViewController {
     @IBOutlet var nameTaskTF: UITextField!
     @IBOutlet var dateTaskTF: UIDatePicker!
     @IBOutlet var descriptionTaskTF: UITextField!
+    @IBOutlet var editButton: UIBarButtonItem!
     
     var presenter: TaskDetailsViewOutputProtocol!
     private let configurator = TaskDetailsConfigurator()
@@ -54,6 +55,7 @@ class TaskDetailsViewController: UIViewController {
             )
         }
         isEditingMode.toggle()
+        editButton.title = isEditingMode ? "Done" : "Edit"
         toggleEditingMode(isEditing: isEditingMode)
     }
     
@@ -66,6 +68,8 @@ class TaskDetailsViewController: UIViewController {
         nameTaskTF.isHidden = !isEditing
         dateTaskTF.isHidden = !isEditing
         descriptionTaskTF.isHidden = !isEditing
+        
+        editButtonItem.title = isEditing ? "Edit" : "Done"
     }
 }
 
