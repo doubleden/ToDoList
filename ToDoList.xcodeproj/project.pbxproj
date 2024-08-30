@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05915D872C81DB6400733B2F /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05915D862C81DB6400733B2F /* AddTaskViewController.swift */; };
+		05915D892C81DB7E00733B2F /* AddTaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05915D882C81DB7E00733B2F /* AddTaskPresenter.swift */; };
+		05915D8B2C81DB8D00733B2F /* AddTaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05915D8A2C81DB8D00733B2F /* AddTaskInteractor.swift */; };
+		05915D8D2C81DB9C00733B2F /* AddTaskConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05915D8C2C81DB9C00733B2F /* AddTaskConfigurator.swift */; };
 		059AB1E72C7DFD8D00CE23E4 /* TaskListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059AB1E62C7DFD8D00CE23E4 /* TaskListRouter.swift */; };
 		059AB1E92C7E21EA00CE23E4 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059AB1E82C7E21EA00CE23E4 /* TaskCell.swift */; };
 		059AB1EC2C7E2B0500CE23E4 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059AB1EA2C7E2B0500CE23E4 /* Task+CoreDataClass.swift */; };
@@ -33,6 +37,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05915D862C81DB6400733B2F /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		05915D882C81DB7E00733B2F /* AddTaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskPresenter.swift; sourceTree = "<group>"; };
+		05915D8A2C81DB8D00733B2F /* AddTaskInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskInteractor.swift; sourceTree = "<group>"; };
+		05915D8C2C81DB9C00733B2F /* AddTaskConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskConfigurator.swift; sourceTree = "<group>"; };
 		059AB1E62C7DFD8D00CE23E4 /* TaskListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListRouter.swift; sourceTree = "<group>"; };
 		059AB1E82C7E21EA00CE23E4 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		059AB1EA2C7E2B0500CE23E4 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -71,6 +79,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05915D832C81DB2200733B2F /* AddTask */ = {
+			isa = PBXGroup;
+			children = (
+				05915D862C81DB6400733B2F /* AddTaskViewController.swift */,
+				05915D882C81DB7E00733B2F /* AddTaskPresenter.swift */,
+				05915D8A2C81DB8D00733B2F /* AddTaskInteractor.swift */,
+				05915D8C2C81DB9C00733B2F /* AddTaskConfigurator.swift */,
+			);
+			path = AddTask;
+			sourceTree = "<group>";
+		};
 		059AB1EE2C7E2B9200CE23E4 /* CoreDataConfiguration */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,10 +119,11 @@
 		05DC6DD12C7DBBE50088A400 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				05915D832C81DB2200733B2F /* AddTask */,
 				05DC6DE92C7DBC130088A400 /* TaskList */,
 				05DC6DEA2C7DBC200088A400 /* TaskDetails */,
 				05DC6DED2C7DBC460088A400 /* Storyboards */,
-				05DC6DEB2C7DBC340088A400 /* Models */,
+				05DC6DEB2C7DBC340088A400 /* Entities */,
 				05DC6DEC2C7DBC3C0088A400 /* Services */,
 				05DC6DEE2C7DBC560088A400 /* Configuration */,
 				05DC6DEF2C7DBC640088A400 /* Resources */,
@@ -135,13 +155,13 @@
 			path = TaskDetails;
 			sourceTree = "<group>";
 		};
-		05DC6DEB2C7DBC340088A400 /* Models */ = {
+		05DC6DEB2C7DBC340088A400 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				05DC6DDB2C7DBBE50088A400 /* ToDoList.xcdatamodeld */,
 				059AB1F12C7E33E600CE23E4 /* ApiInfo.swift */,
 			);
-			path = Models;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		05DC6DEC2C7DBC3C0088A400 /* Services */ = {
@@ -264,10 +284,13 @@
 				05DC6DFA2C7DD7D90088A400 /* TaskListPresenter.swift in Sources */,
 				05DC6DF52C7DCC040088A400 /* TaskDetailsViewController.swift in Sources */,
 				05DC6DD32C7DBBE50088A400 /* AppDelegate.swift in Sources */,
+				05915D8D2C81DB9C00733B2F /* AddTaskConfigurator.swift in Sources */,
 				059AB1F22C7E33E600CE23E4 /* ApiInfo.swift in Sources */,
 				059AB1E92C7E21EA00CE23E4 /* TaskCell.swift in Sources */,
+				05915D892C81DB7E00733B2F /* AddTaskPresenter.swift in Sources */,
 				05DC6DF32C7DC0AF0088A400 /* TaskListViewController.swift in Sources */,
 				05DC6E062C7DF3AB0088A400 /* TaskDetailsInteractor.swift in Sources */,
+				05915D8B2C81DB8D00733B2F /* AddTaskInteractor.swift in Sources */,
 				05DC6E022C7DF1E30088A400 /* NetworkManager.swift in Sources */,
 				05DC6DF82C7DD1A20088A400 /* TaskCellViewModel.swift in Sources */,
 				059AB1F02C7E2C4500CE23E4 /* CodingUserInfoKey + CoreData.swift in Sources */,
@@ -277,6 +300,7 @@
 				05DC6DFE2C7DDA260088A400 /* TaskListConfigurator.swift in Sources */,
 				05DC6E002C7DED160088A400 /* StorageManager.swift in Sources */,
 				059AB1E72C7DFD8D00CE23E4 /* TaskListRouter.swift in Sources */,
+				05915D872C81DB6400733B2F /* AddTaskViewController.swift in Sources */,
 				05DC6DD52C7DBBE50088A400 /* SceneDelegate.swift in Sources */,
 				05DC6E042C7DF2980088A400 /* TaskDetailsPresenter.swift in Sources */,
 				05DC6E082C7DF41E0088A400 /* TaskDetailsConfigurator.swift in Sources */,

@@ -25,6 +25,10 @@ final class TaskListRouter: TaskListRouterInputProtocol {
         view.performSegue(withIdentifier: "showDetails", sender: task)
     }
     
+    func showAddTaskViewController() {
+        view.performSegue(withIdentifier: "showAddView", sender: nil)
+    }
+    
     func updateViewList() {
         view.tableView.reloadData()
     }
