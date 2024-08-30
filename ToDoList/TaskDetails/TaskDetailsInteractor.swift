@@ -11,11 +11,13 @@ protocol TaskDetailsInteractorInputProtocol {
     init(presenter: TaskDetailsInteractorOutputProtocol, task: Task)
     func toggleIsDoneStatus()
     func provideDetails()
+    func editTask(with name: String, _ description: String, _ date: Date)
 }
 
 protocol TaskDetailsInteractorOutputProtocol: AnyObject {
     func receiveTaskDetails(with dataStore: TaskDetailsDataStore)
     func receiveUpdated(task: Task)
+    func receiveChanged(task: Task)
 }
 
 final class TaskDetailsInteractor: TaskDetailsInteractorInputProtocol {
@@ -41,5 +43,15 @@ final class TaskDetailsInteractor: TaskDetailsInteractorInputProtocol {
     func toggleIsDoneStatus() {
         StorageManager.shared.toggleTaskIsDone(task: task)
         presenter.receiveUpdated(task: task)
+    }
+    
+    func editTask(with name: String, _ description: String, _ date: Date) {
+        StorageManager.shared.edit(
+            task,
+            with: name,
+            description,
+            date
+        )
+        presenter.receiveChanged(task: task)
     }
 }

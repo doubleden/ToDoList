@@ -9,7 +9,7 @@ import UIKit
 
 protocol TaskDetailsViewInputProtocol: AnyObject {
     func displayTaskName(with name: String)
-    func displayTaskDate(with date: String)
+    func displayTaskDate(with date: String, _ dateForDP: Date)
     func displayTaskDescription(description: String)
     func displayImageForButton(with status : Bool)
 }
@@ -18,6 +18,7 @@ protocol TaskDetailsViewOutputProtocol {
     init(view: TaskDetailsViewInputProtocol, router: TaskListRouterOutputProtocol)
     func showDetails()
     func doneButtonWasPressed()
+    func editTask(with name: String, _ description: String, _ date: Date)
 }
 
 class TaskDetailsViewController: UIViewController {
@@ -27,8 +28,13 @@ class TaskDetailsViewController: UIViewController {
     @IBOutlet var descriptionTaskLabel: UILabel!
     @IBOutlet var doneButton: UIButton!
     
+    @IBOutlet var nameTaskTF: UITextField!
+    @IBOutlet var dateTaskTF: UIDatePicker!
+    @IBOutlet var descriptionTaskTF: UITextField!
+    
     var presenter: TaskDetailsViewOutputProtocol!
     private let configurator = TaskDetailsConfigurator()
+    private var isEditingMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,19 +44,45 @@ class TaskDetailsViewController: UIViewController {
     @IBAction func doneButtonDidTapped() {
         presenter.doneButtonWasPressed()
     }
+    
+    @IBAction func editButtonDidTapped(_ sender: UIBarButtonItem) {
+        if isEditingMode {
+            presenter.editTask(
+                with: nameTaskTF.text ?? "",
+                descriptionTaskTF.text ?? "",
+                dateTaskTF.date
+            )
+        }
+        isEditingMode.toggle()
+        toggleEditingMode(isEditing: isEditingMode)
+    }
+    
+    private func toggleEditingMode(isEditing: Bool) {
+        nameTaskLabel.isHidden = isEditing
+        dateTaskLabel.isHidden = isEditing
+        descriptionTaskLabel.isHidden = isEditing
+        doneButton.isHidden = isEditing
+        
+        nameTaskTF.isHidden = !isEditing
+        dateTaskTF.isHidden = !isEditing
+        descriptionTaskTF.isHidden = !isEditing
+    }
 }
 
 extension TaskDetailsViewController: TaskDetailsViewInputProtocol {
     func displayTaskName(with name: String) {
         nameTaskLabel.text = name
+        nameTaskTF.text = name
     }
     
-    func displayTaskDate(with date: String) {
+    func displayTaskDate(with date: String, _ dateForDP: Date) {
         dateTaskLabel.text = date
+        dateTaskTF.date = dateForDP
     }
     
     func displayTaskDescription(description: String) {
         descriptionTaskLabel.text = description
+        descriptionTaskTF.text = description
     }
     
     func displayImageForButton(with status: Bool) {

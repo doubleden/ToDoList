@@ -73,10 +73,12 @@ final class StorageManager {
         saveContext()
     }
     
-    func edit(_ task: Task, withNewTask: Task) {
-        task.name = withNewTask.name
-        task.descrip = withNewTask.descrip
-        task.date = withNewTask.date
+    func edit(_ task: Task, with newName: String, _ newDescription: String, _ newDate: Date) {
+        task.name = newName
+        task.descrip = newDescription
+        if newDate != Date(timeIntervalSince1970: .zero) {
+            task.date = newDate
+        }
         saveContext()
     }
     
